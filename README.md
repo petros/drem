@@ -1,5 +1,7 @@
 # DragonRuby Environment Manager
 
+![Rust action status](https://github.com/petros/drem/actions/workflows/rust.yml/badge.svg)
+
 This is a command line utility that helps with the following tasks:
 
 1. Start a new game that can be published as an open source project
