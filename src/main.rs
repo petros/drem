@@ -50,7 +50,7 @@ fn unzip(drgtk: &PathBuf, name: String) -> Result<(), String> {
             Ok(file) => file,
             Err(error) => return Err(format!("Could not read archive file: {}", error)),
         };
-        let outpath = file.sanitized_name();
+        let outpath = file.mangled_name();
 
         if (&*file.name()).starts_with("dragonruby-macos") {
             let new_path = Path::new(format!("dragonruby-{}-drgtk", name).as_str())
