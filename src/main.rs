@@ -1,11 +1,9 @@
-use clap::{Arg, Command, Parser};
+use clap::{Arg, Command};
 use std::{
     fs::File,
     path::{Path, PathBuf},
 };
 use zip::ZipArchive;
-
-const DEFAULT_GAME_NAME: &str = "mygame";
 
 fn files_exist_in_archive(drgtk: &PathBuf, files: &[&str]) -> bool {
     let reader = File::open(drgtk).unwrap();
@@ -78,7 +76,7 @@ fn build_new() -> Command {
     let name = Arg::new("name")
         .short('n')
         .long("name")
-        .default_value(DEFAULT_GAME_NAME)
+        .required(true)
         .help("Name of the new game");
     let drgtk = Arg::new("drgtk")
         .short('g')
