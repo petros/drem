@@ -1,7 +1,6 @@
 use clap::{Arg, Command};
 use git2::Repository;
 use std::io::Write;
-use std::str::FromStr;
 use std::{
     fs::File,
     path::{Path, PathBuf},
@@ -43,7 +42,7 @@ fn current_directory() -> PathBuf {
     std::env::current_dir().unwrap()
 }
 
-fn unzip(drgtk: &PathBuf, name: String) -> Result<(), String> {
+fn perform_new_command(drgtk: &PathBuf, name: String) -> Result<(), String> {
     let reader = match File::open(drgtk) {
         Ok(file) => file,
         Err(error) => return Err(format!("Could not open DRGTK: {}", error)),
@@ -128,7 +127,7 @@ fn main() {
             if let Some(drgtk) = command.get_one::<PathBuf>("drgtk") {
                 println!("Using DRGTK: {:?}", drgtk);
                 if archive_is_drgtk(drgtk) {
-                    match unzip(drgtk, name.clone()) {
+                    match perform_new_command(drgtk, name.clone()) {
                         Ok(_) => {
                             println!("Done!");
                         }
