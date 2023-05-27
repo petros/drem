@@ -5,10 +5,6 @@ use std::{
 };
 use zip::ZipArchive;
 
-#[derive(Parser, Debug)]
-#[command(author = "Petros Amoiridis", version, about, long_about = None)]
-struct Args {}
-
 const DEFAULT_GAME_NAME: &str = "mygame";
 
 fn files_exist_in_archive(drgtk: &PathBuf, files: &[&str]) -> bool {
