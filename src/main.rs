@@ -58,6 +58,13 @@ fn unzip(drgtk: &PathBuf, name: String) -> Result<(), String> {
 
             if (&*file.name()).ends_with('/') {
                 std::fs::create_dir_all(&new_path).unwrap();
+                if new_path.ends_with("mygame/data")
+                    || new_path.ends_with("mygame/fonts")
+                    || new_path.ends_with("mygame/sounds")
+                {
+                    let gitkeep_path = new_path.join(".gitkeep");
+                    File::create(gitkeep_path).expect("Could not create .gitkeep file");
+                }
             } else {
                 if let Some(p) = new_path.parent() {
                     if !p.exists() {
