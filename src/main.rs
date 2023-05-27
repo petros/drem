@@ -1,4 +1,5 @@
 use clap::{Arg, Command};
+use std::io::Write;
 use std::{
     fs::File,
     path::{Path, PathBuf},
@@ -28,6 +29,12 @@ fn archive_is_drgtk(drgtk: &PathBuf) -> bool {
             "dragonruby-macos/console-logo.png",
         ],
     )
+}
+
+fn create_gitignore(path: &Path) {
+    let mut gitignore =
+        File::create(path.join(".gitignore")).expect("Could not create .gitignore file");
+    writeln!(gitignore, ".DS_Store").expect("Could not write to .gitignore file");
 }
 
 fn current_directory() -> PathBuf {
@@ -64,6 +71,10 @@ fn unzip(drgtk: &PathBuf, name: String) -> Result<(), String> {
                 {
                     let gitkeep_path = new_path.join(".gitkeep");
                     File::create(gitkeep_path).expect("Could not create .gitkeep file");
+                }
+                if new_path.ends_with("mygame") {
+                    // Create the .gitignore file
+                    create_gitignore(&new_path);
                 }
             } else {
                 if let Some(p) = new_path.parent() {
