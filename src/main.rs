@@ -36,24 +36,6 @@ fn current_directory() -> PathBuf {
     std::env::current_dir().unwrap()
 }
 
-fn extract(drgtk: &PathBuf, name: String) -> Result<(), String> {
-    let reader = match File::open(dbg!(drgtk)) {
-        Ok(file) => file,
-        Err(error) => return Err(format!("Could not open DRGTK: {}", error)),
-    };
-    let mut archive = match ZipArchive::new(reader) {
-        Ok(archive) => archive,
-        Err(error) => return Err(format!("Could not read DRGTK: {}", error)),
-    };
-    let directory = current_directory().join(format!("dragonruby-{}-drgtk", name));
-    println!("Extracting to {:?}", directory);
-    let zip_result = match archive.extract(directory) {
-        Ok(_) => Ok(()),
-        Err(error) => Err(format!("Could not extract DRGTK: {}", error)),
-    };
-    zip_result
-}
-
 fn unzip(drgtk: &PathBuf, name: String) -> Result<(), String> {
     let reader = match File::open(dbg!(drgtk)) {
         Ok(file) => file,
