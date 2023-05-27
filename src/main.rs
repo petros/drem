@@ -35,7 +35,7 @@ fn current_directory() -> PathBuf {
 }
 
 fn unzip(drgtk: &PathBuf, name: String) -> Result<(), String> {
-    let reader = match File::open(dbg!(drgtk)) {
+    let reader = match File::open(drgtk) {
         Ok(file) => file,
         Err(error) => return Err(format!("Could not open DRGTK: {}", error)),
     };
