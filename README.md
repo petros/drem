@@ -1,8 +1,8 @@
-# DragonRuby Environment Manager `drem`
+# `drem` (DragonRuby Environment Manager)
 
 ![Rust action status](https://github.com/petros/drem/actions/workflows/rust.yml/badge.svg)
 
-A command line utility written in Rust to help manage DragonRuby projects. This related to the [DragonRuby Game Toolkit](https://dragonruby.org/toolkit/game) (DRGTK).
+A command line utility written in Rust to help manage DragonRuby projects. This is related to the [DragonRuby Game Toolkit](https://dragonruby.org/toolkit/game) (DRGTK).
 
 ## Usage
 
@@ -21,6 +21,8 @@ Options:
 ```
 
 ### Create a new game
+
+It will create a local copy of DRGTK and initialize a new game under it in a way that will make it easy to push to GitHub or elsewhere.
 
 ```
 $ drew new --help
@@ -47,7 +49,7 @@ This will do the following:
 - Add a `.gitignore` file under `dragonruby-eggs-drgtk/mygame` that ignores `.DS_Store` files.
 - Initializes a git repository under `dragonruby-eggs-drgtk/mygame`.
 
-After that, the developer can start working on their game push `dragonruby-eggs-drgtk/mygame` to GitHub or elsewhere.
+After that, the developer can start working on their game and push `dragonruby-eggs-drgtk/mygame` to GitHub or elsewhere.
 
 ## To do
 
