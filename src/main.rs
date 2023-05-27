@@ -1,5 +1,7 @@
 use clap::{Arg, Command};
+use git2::Repository;
 use std::io::Write;
+use std::str::FromStr;
 use std::{
     fs::File,
     path::{Path, PathBuf},
@@ -60,8 +62,8 @@ fn unzip(drgtk: &PathBuf, name: String) -> Result<(), String> {
         let outpath = file.mangled_name();
 
         if (&*file.name()).starts_with("dragonruby-macos") {
-            let new_path = Path::new(format!("dragonruby-{}-drgtk", name).as_str())
-                .join(outpath.strip_prefix("dragonruby-macos").unwrap());
+            let new_path =
+                Path::new(&directory).join(outpath.strip_prefix("dragonruby-macos").unwrap());
 
             if (&*file.name()).ends_with('/') {
                 std::fs::create_dir_all(&new_path).unwrap();
@@ -87,6 +89,12 @@ fn unzip(drgtk: &PathBuf, name: String) -> Result<(), String> {
             }
         }
     }
+    git_init(&Path::new(&directory).join("mygame")).expect("Could not initialize git repository");
+    Ok(())
+}
+
+fn git_init(path: &Path) -> Result<(), git2::Error> {
+    Repository::init(path)?;
     Ok(())
 }
 
