@@ -104,7 +104,7 @@ fn build_new_subcommand() -> Command {
         .required(true)
         .help("Name of the new game");
     let drgtk = Arg::new("drgtk")
-        .short('g')
+        .short('d')
         .long("drgtk")
         .required(true)
         .value_parser(clap::value_parser!(PathBuf))
