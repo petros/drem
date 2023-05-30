@@ -60,11 +60,11 @@ fn perform_new_command(drgtk: &PathBuf, name: String) -> Result<(), String> {
         };
         let outpath = file.mangled_name();
 
-        if (&*file.name()).starts_with("dragonruby-macos") {
+        if (*file.name()).starts_with("dragonruby-macos") {
             let new_path =
                 Path::new(&directory).join(outpath.strip_prefix("dragonruby-macos").unwrap());
 
-            if (&*file.name()).ends_with('/') {
+            if (*file.name()).ends_with('/') {
                 std::fs::create_dir_all(&new_path).unwrap();
                 if new_path.ends_with("mygame/data")
                     || new_path.ends_with("mygame/fonts")
@@ -80,7 +80,7 @@ fn perform_new_command(drgtk: &PathBuf, name: String) -> Result<(), String> {
             } else {
                 if let Some(p) = new_path.parent() {
                     if !p.exists() {
-                        std::fs::create_dir_all(&p).unwrap();
+                        std::fs::create_dir_all(p).unwrap();
                     }
                 }
                 let mut outfile = std::fs::File::create(&new_path).unwrap();
