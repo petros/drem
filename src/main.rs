@@ -97,7 +97,7 @@ fn git_init(path: &Path) -> Result<(), git2::Error> {
     Ok(())
 }
 
-fn build_new() -> Command {
+fn build_new_subcommand() -> Command {
     let name = Arg::new("name")
         .short('n')
         .long("name")
@@ -116,7 +116,7 @@ fn build_new() -> Command {
 }
 
 fn build_command() -> Command {
-    Command::new("drem").subcommand(build_new())
+    Command::new("drem").subcommand(build_new_subcommand())
 }
 
 fn main() {
