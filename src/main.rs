@@ -83,7 +83,7 @@ fn perform_new_command(drgtk: &PathBuf, name: String) -> Result<(), String> {
                         std::fs::create_dir_all(p).unwrap();
                     }
                 }
-                let mut outfile = std::fs::File::create(&new_path).unwrap();
+                let mut outfile = File::create(&new_path).unwrap();
                 std::io::copy(&mut file, &mut outfile).unwrap();
             }
         }
