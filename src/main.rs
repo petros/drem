@@ -60,11 +60,11 @@ fn perform_new_command(drgtk: &PathBuf, name: String) -> Result<(), String> {
         };
         let outpath = file.mangled_name();
 
-        if (&*file.name()).starts_with("dragonruby-macos") {
+        if (*file.name()).starts_with("dragonruby-macos") {
             let new_path =
                 Path::new(&directory).join(outpath.strip_prefix("dragonruby-macos").unwrap());
 
-            if (&*file.name()).ends_with('/') {
+            if (*file.name()).ends_with('/') {
                 std::fs::create_dir_all(&new_path).unwrap();
                 if new_path.ends_with("mygame/data")
                     || new_path.ends_with("mygame/fonts")
@@ -80,10 +80,10 @@ fn perform_new_command(drgtk: &PathBuf, name: String) -> Result<(), String> {
             } else {
                 if let Some(p) = new_path.parent() {
                     if !p.exists() {
-                        std::fs::create_dir_all(&p).unwrap();
+                        std::fs::create_dir_all(p).unwrap();
                     }
                 }
-                let mut outfile = std::fs::File::create(&new_path).unwrap();
+                let mut outfile = File::create(&new_path).unwrap();
                 std::io::copy(&mut file, &mut outfile).unwrap();
             }
         }
@@ -97,14 +97,14 @@ fn git_init(path: &Path) -> Result<(), git2::Error> {
     Ok(())
 }
 
-fn build_new() -> Command {
+fn build_new_subcommand() -> Command {
     let name = Arg::new("name")
         .short('n')
         .long("name")
         .required(true)
         .help("Name of the new game");
     let drgtk = Arg::new("drgtk")
-        .short('g')
+        .short('d')
         .long("drgtk")
         .required(true)
         .value_parser(clap::value_parser!(PathBuf))
@@ -116,7 +116,7 @@ fn build_new() -> Command {
 }
 
 fn build_command() -> Command {
-    Command::new("drem").subcommand(build_new())
+    Command::new("drem").subcommand(build_new_subcommand())
 }
 
 fn main() {
