@@ -9,7 +9,7 @@ A command line utility written in Rust to help manage DragonRuby projects. This 
 ### General help
 
 ```
-$ drew --help
+$ drem --help
 Usage: drem [COMMAND]
 
 Commands:
@@ -25,14 +25,14 @@ Options:
 It will create a local copy of DRGTK and initialize a new game under it in a way that will make it easy to push to GitHub or elsewhere.
 
 ```
-$ drew new --help
+$ drem new --help
 Create a new game
 
 Usage: drem new --name <name> --drgtk <drgtk>
 
 Options:
   -n, --name <name>    Name of the new game
-  -g, --drgtk <drgtk>  Path to DRGTK zip to use
+  -d, --drgtk <drgtk>  Path to DRGTK zip to use
   -h, --help           Print help
 ```
 
