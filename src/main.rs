@@ -116,7 +116,9 @@ fn build_new_subcommand() -> Command {
 }
 
 fn build_command() -> Command {
-    Command::new("drem").subcommand(build_new_subcommand())
+    Command::new("drem")
+        .version("0.2.0")
+        .subcommand(build_new_subcommand())
 }
 
 fn main() {
