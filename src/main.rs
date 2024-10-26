@@ -116,7 +116,7 @@ fn extract_archive(archive: &mut ZipArchive<File>, directory: &Path) -> Result<(
 
 fn create_directory_structure(new_path: &Path) -> Result<(), String> {
     // Create the directory at the specified path.
-    std::fs::create_dir_all(&new_path).map_err(|_| "Could not create directory".to_string())?;
+    std::fs::create_dir_all(new_path).map_err(|_| "Could not create directory".to_string())?;
     // Create a .gitkeep file for specific directories to ensure they are tracked by git.
     if new_path.ends_with("mygame/data")
         || new_path.ends_with("mygame/fonts")
@@ -127,7 +127,7 @@ fn create_directory_structure(new_path: &Path) -> Result<(), String> {
     }
     // Create a .gitignore file in the "mygame" directory.
     if new_path.ends_with("mygame") {
-        create_gitignore(&new_path);
+        create_gitignore(new_path);
     }
     Ok(())
 }
@@ -142,11 +142,11 @@ fn extract_file(file: &mut ZipFile, new_path: &Path) -> Result<(), String> {
     }
     // Create the output file at the specified path.
     let mut outfile =
-        File::create(&new_path).map_err(|_| "Could not create output file".to_string())?;
+        File::create(new_path).map_err(|_| "Could not create output file".to_string())?;
     // Copy the contents of the archive entry to the output file.
     std::io::copy(file, &mut outfile).map_err(|_| "Could not copy file contents".to_string())?;
     // Set executable permissions if the file is marked as executable.
-    set_executable_permissions(file, &new_path);
+    set_executable_permissions(file, new_path);
     Ok(())
 }
 
