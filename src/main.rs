@@ -8,7 +8,13 @@ use std::{
 use zip::ZipArchive;
 
 fn files_exist_in_archive(drgtk: &PathBuf, files: &[&str]) -> bool {
-    let reader = File::open(drgtk).unwrap();
+    let reader = match File::open(drgtk) {
+        Ok(file) => file,
+        Err(error) => {
+            eprintln!("Could not open DRGTK: {}", error);
+            return false;
+        }
+    };
     let mut archive = ZipArchive::new(reader).unwrap();
     let mut result = true;
     for file_name in files {
@@ -116,8 +122,9 @@ fn build_new_subcommand() -> Command {
 }
 
 fn build_command() -> Command {
+    let version = env!("CARGO_PKG_VERSION");
     Command::new("drem")
-        .version("0.2.0")
+        .version(version)
         .subcommand(build_new_subcommand())
 }
 
@@ -135,10 +142,12 @@ fn main() {
                         }
                         Err(e) => {
                             println!("Error: {}", e);
+                            std::process::exit(1);
                         }
                     }
                 } else {
                     println!("DRGTK is not a valid macOS archive");
+                    std::process::exit(1);
                 }
             }
         }
