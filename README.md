@@ -52,12 +52,6 @@ This will do the following:
 
 After that, the developer can start working on their game and push `dragonruby-eggs-drgtk/mygame` to GitHub or elsewhere.
 
-## To do
-
-- [ ] Add support for Windows and Linux
-- [ ] Add support for cloning an existing game from GitHub or elsewhere
-- [ ] Figure out a mechanism to remember the DRGTK version used for a game
-
 ## Assumptions
 
 - The developer has already downloaded a version of DRGTK somewhere on their system.
@@ -65,4 +59,4 @@ After that, the developer can start working on their game and push `dragonruby-e
 
 ## Contributing
 
-Contributions are welcome. Please open an issue first to discuss what you would like to change if it's a bug, or a discussion if it's a feature request.
+Contributions are welcome. Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for more information.
