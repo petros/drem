@@ -8,7 +8,7 @@ Keep an open mind! Improving documentation, bug triaging, or writing tutorials a
 
 This is an open source project and we love to receive contributions from our community — you! There are many ways to contribute, from writing tutorials or blog posts, improving the documentation, submitting bug reports and feature requests or writing code which can be incorporated into Elasticsearch itself.
 
-### What we are not looking for you are NOT looking for (if any).
+### What we are NOT looking for
 
 Please, don't use the issue tracker for support questions. Instead, use [discussions](https://github.com/petros/drem/discussions). If you have a question specific to the DragonRuby Game Toolkit, please consider checking their [website](https://dragonruby.org/toolkit/game) or joining their [Discord server](https://dragonruby.org/toolkit/game/chat).
 
@@ -26,8 +26,9 @@ Responsibilities
 # Your First Contribution
 
 Unsure where to begin contributing? You can start by looking through these beginner and help-wanted issues:
-Beginner issues - issues which should only require a few lines of code, and a test or two.
-Help wanted issues - issues which should be a bit more involved than beginner issues.
+
+- https://github.com/petros/drem/labels/good%20first%20issue - Beginner friendly issues which should only require a few lines of code, and a test or two.
+- https://github.com/petros/drem/labels/help%20wanted - issues which should be a bit more involved than beginner issues.
 
 **Working on your first Pull Request?** You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://kcd.im/pull-request)
 
