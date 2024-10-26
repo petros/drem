@@ -116,8 +116,9 @@ fn build_new_subcommand() -> Command {
 }
 
 fn build_command() -> Command {
+    let version = env!("CARGO_PKG_VERSION");
     Command::new("drem")
-        .version("0.2.0")
+        .version(version)
         .subcommand(build_new_subcommand())
 }
 
