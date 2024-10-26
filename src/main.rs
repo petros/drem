@@ -142,10 +142,12 @@ fn main() {
                         }
                         Err(e) => {
                             println!("Error: {}", e);
+                            std::process::exit(1);
                         }
                     }
                 } else {
                     println!("DRGTK is not a valid macOS archive");
+                    std::process::exit(1);
                 }
             }
         }
