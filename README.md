@@ -1,6 +1,6 @@
 # `drem` (DragonRuby Environment Manager)
 
-![Rust action status](https://github.com/petros/drem/actions/workflows/rust.yml/badge.svg)
+![Rust action status](https://github.com/petros/drem/actions/workflows/rust.yml/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 
 A command line utility written in Rust to help manage DragonRuby projects. This is related to the [DragonRuby Game Toolkit](https://dragonruby.org/toolkit/game) (DRGTK).
 
